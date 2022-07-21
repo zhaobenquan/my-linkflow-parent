@@ -1,0 +1,92 @@
+server:
+  port: 8002
+
+spring:
+  datasource:
+    #5.xx  com.mysql.jdbc.Driver 不需要在url中指定serverTimezone（时区）
+    #6.xx及以上 com.mysql.cj.jdbc.Driver 需要在URL中指定 serverTimezone（时区）
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #useUnicode=true&characterEncoding=utf-8 数据库如果为gbk编码  存先转字节在gbk   取先把gbk转字节 在解码utf-8
+    #useSSL=true是进行安全验证，一般通过证书或者令牌什么的，useSSL=false就是通过账号密码进行连接，通常使用useSSL=false！！！5.7以及之前的版本则不用进行添加useSSL=false，会默认为false
+    #allowMultiQueries=true 1.可以在sql语句后携带分号，实现多语句执行。2.可以执行批处理，同时发出多个SQL语句。
+    #serverTimezone=UTC   GMT%2B8  Asia/Shanghai  是同步的   UTC会差8小时
+    #zeroDateTimeBehavior=convertToNull  1.exception（不指定，则默认）---->默认抛出异常，2.convertToNull------->转化为null  3.round------->替换成最近的日期即XXXX-01-01
+    #useLegacyDatetimeCode=false 不转化时区  以serverTimezone=GMT%2b8为准
+    url: jdbc:mysql://localhost:3306/my-app-village-info?useUnicode=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&allowMultiQueries=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+#    schema:
+#      - classpath:initialization/mybatisPlusTable.sql   #指定sql 文件
+#      - classpath:initialization/village_info.sql   #指定sql 文件
+#    #      - classpath:initialization/*.sql     #所有sql 文件  多个文件对同一张表操作建议不要用
+#    initialization-mode: always   #boot2.x以上版本必须指定 不加不报错 也不执行
+
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+
+    allow-circular-references: true   #允许bean的循环注入
+
+  application:
+    name: MYTESTMYBATISPLUS  #服务名称
+
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+#mybatis 配置
+mybatis-plus:
+  #xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）(以SqlSessionFactory的配置为最高优先级)  可以忽略
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名    可以忽略
+  type-aliases-package: com.zhao.benquan
+  #如果配置了该属性，则仅仅会扫描路径下以该类作为父类的域对象
+  type-aliases-super-type: java.lang.Object
+  #枚举类 扫描路径，如果配置了该属性，会将路径下的枚举类进行注入，让实体类字段能够简单快捷的使用枚举属性   可以忽略
+  type-enums-package: io.naza.enums
+  #项目启动会检查xml配置存在(只在开发时候打开)        可以忽略
+  check-config-location: true
+  configuration:
+    #日志打印sql语句 and sql结果列表
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射   默认开启
+    map-underscore-to-camel-case: true
+    # 全局地开启或关闭配置文件中的所有映射器已经配置的任何缓存，默认为 true
+    cache-enabled: false
+    #懒加载    true级联sql会自定执行  false用到才执行
+    aggressive-lazy-loading: true
+    #NONE：不启用自动映射 PARTIAL：只对非嵌套的 resultMap 进行自动映射 FULL：对所有的 resultMap 都进行自动映射
+    auto-mapping-behavior: full
+    #NONE：不做任何处理 (默认值)WARNING：以日志的形式打印相关警告信息 FAILING：当作映射失败处理，并抛出异常和详细信息
+    auto-mapping-unknown-column-behavior: none
+    #如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    #SIMPLE：该执行器类型不做特殊的事情，为每个语句的执行创建一个新的预处理语句,REUSE：该执行器类型会复用预处理语句,BATCH：该执行器类型会批量执行所有的更新语句
+    default-executor-type: REUSE
+  global-config:
+    db-config:
+      #表名下划线命名默认true
+      table-underline: true
+      #id类型
+      id-type: auto
+      #是否开启大写命名，默认不开启
+      #capital-mode: false
+      #逻辑已删除值,(逻辑删除下有效) 需要注入逻辑策略LogicSqlInjector 以@Bean方式注入
+      #logic-not-delete-value: 0
+      #逻辑未删除值,(逻辑删除下有效)
+      #logic-delete-value: 1
+      #数据库类型
+      db-type: mysql
+  multi-tenant:
+    ignorable-tables: schedule_job,mp_account
+
+
+
+logging:
+  level:
+    com.zhaobenquan.mapper: debug
+
+#自定义的值
+mybatis:
+  plus:
+    tenant-id: 1111

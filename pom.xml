@@ -6,7 +6,12 @@
 
     <groupId>com.zhaobenquan</groupId>
     <artifactId>my-linflow-parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>linkflow</module>
+        <module>tms-server</module>
+    </modules>
 
 
     <!--springboot prent-->
