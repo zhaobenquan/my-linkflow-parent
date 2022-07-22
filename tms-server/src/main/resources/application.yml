@@ -24,15 +24,16 @@ spring:
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
 
-    allow-circular-references: true   #允许bean的循环注入
+    allow-circular-references: true   #spirngboot 2.6x 版本 循环依赖默认flase 开启允许bean的循环注入
 
   application:
     name: MYTESTMYBATISPLUS  #服务名称
 
 
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+#springboot 2.6x后  配置swagger  会报错  以下配置可恶意解决
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
 
 #mybatis 配置
 mybatis-plus:

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaobenquan.linkflow.mapper.TenantMapper">
+  <resultMap id="BaseResultMap" type="com.zhaobenquan.linkflow.entitys.Tenant">
+    <!--@mbg.generated-->
+    <!--@Table tenant-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="last_updated" jdbcType="TIMESTAMP" property="lastUpdated" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="tenant_id" jdbcType="BIGINT" property="tenantId" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="last_enabled_date" jdbcType="TIMESTAMP" property="lastEnabledDate" />
+    <result column="expired_date" jdbcType="TIMESTAMP" property="expiredDate" />
+    <result column="advanced_user_enabled" jdbcType="BIT" property="advancedUserEnabled" />
+    <result column="market_enabled" jdbcType="BIT" property="marketEnabled" />
+    <result column="permission_enabled" jdbcType="BIT" property="permissionEnabled" />
+    <result column="data_access_enabled" jdbcType="BIT" property="dataAccessEnabled" />
+    <result column="book_code" jdbcType="VARCHAR" property="bookCode" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="phase_type" jdbcType="VARCHAR" property="phaseType" />
+    <result column="edition_id" jdbcType="BIGINT" property="editionId" />
+    <result column="journey_template_dev_enabled" jdbcType="BIT" property="journeyTemplateDevEnabled" />
+    <result column="locale" jdbcType="VARCHAR" property="locale" />
+    <result column="private_key" jdbcType="VARCHAR" property="privateKey" />
+    <result column="public_key" jdbcType="VARCHAR" property="publicKey" />
+    <result column="key_create_date" jdbcType="TIMESTAMP" property="keyCreateDate" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="showhelp" jdbcType="BOOLEAN" property="showhelp" />
+    <result column="show_udesk" jdbcType="BOOLEAN" property="showUdesk" />
+    <result column="show_ticket" jdbcType="BOOLEAN" property="showTicket" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="has_hue" jdbcType="BOOLEAN" property="hasHue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, version, contact_name, date_created, email, is_active, last_updated, mobile_phone, 
+    `name`, tenant_id, company, `status`, last_enabled_date, expired_date, advanced_user_enabled, 
+    market_enabled, permission_enabled, data_access_enabled, book_code, `comment`, phase_type, 
+    edition_id, journey_template_dev_enabled, `locale`, private_key, public_key, key_create_date, 
+    `scale`, showhelp, show_udesk, show_ticket, industry, has_hue
+  </sql>
+</mapper>

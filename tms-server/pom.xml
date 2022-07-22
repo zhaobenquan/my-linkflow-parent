@@ -33,16 +33,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.zhaobenquan.base.common</groupId>
-            <artifactId>base-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zhaobenquan.base.common.db</groupId>
-            <artifactId>base-common-db</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.zhaobenquan.web.mybatis.plus</groupId>
             <artifactId>web-mybatis-plus</artifactId>
             <version>1.0-SNAPSHOT</version>
